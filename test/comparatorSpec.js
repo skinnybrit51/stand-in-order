@@ -18,19 +18,19 @@ describe('Comparator', function () {
     it('Should compare two booleans', function () {
         expect(comparator.boolean(false, true) < 0).to.be.true;
         expect(comparator.boolean(false, false) === 0).to.be.true;
-        expect(comparator.boolean(false, true, false) > 0).to.be.true
+        expect(comparator.boolean(false, true, false) > 0).to.be.true;
     });
 
     it('Should compare two integers', function () {
-        expect(comparator.integer(1, 2) < 0).to.be.true
-        expect(comparator.integer(1, 1) === 0).to.be.true
-        expect(comparator.integer(1, 2, false) > 0).to.be.true
+        expect(comparator.integer(1, 2) < 0).to.be.true;
+        expect(comparator.integer(1, 1) === 0).to.be.true;
+        expect(comparator.integer(1, 2, false) > 0).to.be.true;
     });
 
-    it('Should compare two decimals', function () {
-        expect(comparator.decimal(1.1, 1.2) < 0).to.be.true
-        expect(comparator.decimal(1.1, 1.1) === 0).to.be.true
-        expect(comparator.decimal(1.1, 1.2, false) > 0).to.be.true
+    it('Should compare two floats', function () {
+        expect(comparator.float(1.1, 1.2) < 0).to.be.true;
+        expect(comparator.float(1.1, 1.1) === 0).to.be.true;
+        expect(comparator.float(1.1, 1.2, false) > 0).to.be.true;
     });
 
 });

@@ -19,7 +19,10 @@ module.exports = function (grunt) {
                 cache: true,
                 reporter: 'default',
                 globals: {
-                    module: true
+                    module: true,
+                    require: true,
+                    it: true,
+                    describe: true
                 }
             },
             all: ['Gruntfile.js', 'test/**/*.js', 'lib/**/*.js']
