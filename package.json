@@ -8,7 +8,6 @@
     "url": "https://github.com/mmaltby/stand-in-order"
   },
   "dependencies": {
-    "moment": "~2.5.1",
     "underscore": "1.6.0"
   },
   "devDependencies": {
