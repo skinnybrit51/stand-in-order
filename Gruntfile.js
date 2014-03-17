@@ -1,6 +1,5 @@
-'use strict';
-
-module.exports = function(grunt) {
+module.exports = function (grunt) {
+    'use strict';
     grunt.initConfig({
         pkg: grunt.file.readJSON('./package.json'),
         simplemocha: {
@@ -18,7 +17,10 @@ module.exports = function(grunt) {
                 jshintrc: '.jshintrc',
                 force: false,
                 cache: true,
-                reporter: 'default'
+                reporter: 'default',
+                globals: {
+                    module: true
+                }
             },
             all: ['Gruntfile.js', 'test/**/*.js', 'lib/**/*.js']
         }
