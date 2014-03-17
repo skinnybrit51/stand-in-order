@@ -1,0 +1,26 @@
+{
+  "name": "stand-in-order",
+  "description": "sorting library",
+  "version": "0.0.1",
+  "keywords": ["sort", "javascript", "objects"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mmaltby/stand-in-order"
+  },
+  "dependencies": {
+    "moment": "~2.5.1",
+    "underscore": "1.6.0"
+  },
+  "devDependencies": {
+    "mocha": "1.18.0",
+    "chai": "1.9.0",
+    "grunt": "~0.4.2",
+    "grunt-cli": "0.1.11",
+    "grunt-simple-mocha": "~0.4.0",
+    "grunt-jshint2": "~2.4.4",
+    "jsdom": "~0.8.10"
+  },
+  "scripts": {
+    "test": "NODE_PATH=lib grunt test"
+  }
+}
