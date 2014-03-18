@@ -1,7 +1,7 @@
 var expect = require('chai').expect,
     sort = require('sorter');
 
-describe('sort', function () {
+describe('Sort', function () {
 
     it('Should be able to handle nested values', function () {
         var list = [
@@ -34,7 +34,9 @@ describe('sort', function () {
                 }
             }
         ];
-        sort(list, {by: 'foo.bar.name', type: 'string'});
+        sort(list, [
+            {name: 'foo.bar.name', type: 'string'}
+        ]);
         expect(list[0].foo.bar.name).to.equal('Ann');
         expect(list[1].foo.bar.name).to.equal('Fred');
         expect(list[2].foo.bar.name).to.equal('Ted');
@@ -60,10 +62,16 @@ describe('sort', function () {
                 bar: 4
             }
         ];
-        sort(list, {
-            type: 'integer',
-            by: ['foo', 'bar']
-        });
+        sort(list, [
+            {
+                type: 'integer',
+                name: 'foo'
+            },
+            {
+                type: 'integer',
+                name: 'bar'
+            }
+        ]);
         expect(list[0].foo).to.equal(1);
         expect(list[0].bar).to.equal(1);
         expect(list[1].foo).to.equal(1);
@@ -94,19 +102,17 @@ describe('sort', function () {
                     bar: 4
                 }
             ];
-            sort(list, {
-                type: 'integer',
-                by: [
-                    {
-                        name: 'foo',
-                        ascending: true
-                    },
-                    {
-                        name: 'bar',
-                        ascending: false
-                    }
-                ]
-            });
+            sort(list, [
+                {
+                    type: 'integer',
+                    name: 'foo'
+                },
+                {
+                    type: 'integer',
+                    name: 'bar',
+                    ascending: false
+                }
+            ]);
             expect(list[0].foo).to.equal(1);
             expect(list[0].bar).to.equal(4);
             expect(list[1].foo).to.equal(1);
@@ -124,10 +130,12 @@ describe('sort', function () {
             {foo: 'e'},
             {foo: 'd'}
         ];
-        sort(list, {
-            type: 'string',
-            by: 'foo'
-        });
+        sort(list, [
+            {
+                type: 'string',
+                name: 'foo'
+            }
+        ]);
         expect(list[0].foo).to.equal('a');
         expect(list[1].foo).to.equal('d');
         expect(list[2].foo).to.equal('e');
@@ -136,13 +144,16 @@ describe('sort', function () {
 
     it('Should throw an error if no type is defined', function () {
         expect(function () {
-            sort([], {});
-        }).to.throw('No type defined for sort.  Value must be set to one of the following - ');
+            sort([], []);
+        }).to.throw('No type defined for sort.  Type must be set to one of the following - ' +
+                'string,integer,float,boolean,date');
     });
 
     it('Should sort a string list into ascending order', function () {
         var list = ['a', 'b', 'aa', 'bc'];
-        sort(list, {type: 'string'});
+        sort(list, [
+            {type: 'string'}
+        ]);
         expect(list[0]).to.equal('a');
         expect(list[1]).to.equal('aa');
         expect(list[2]).to.equal('b');
@@ -151,7 +162,9 @@ describe('sort', function () {
 
     it('Should sort a string list into descending order', function () {
         var list = ['a', 'b', 'aa', 'bc'];
-        sort(list, {ascending: false, type: 'string'});
+        sort(list, [
+            {ascending: false, type: 'string'}
+        ]);
         expect(list[0]).to.equal('bc');
         expect(list[1]).to.equal('b');
         expect(list[2]).to.equal('aa');
@@ -160,7 +173,9 @@ describe('sort', function () {
 
     it('Should sort a date list into ascending order', function () {
         var list = ['2014-01-01', '2014-06-01', '2014-03-01', '2014-09-01'];
-        sort(list, {type: 'date'});
+        sort(list, [
+            {type: 'date'}
+        ]);
         expect(list[0]).to.equal('2014-01-01');
         expect(list[1]).to.equal('2014-03-01');
         expect(list[2]).to.equal('2014-06-01');
@@ -169,7 +184,9 @@ describe('sort', function () {
 
     it('Should sort a date list into descending order', function () {
         var list = ['2014-01-01', '2014-06-01', '2014-03-01', '2014-09-01'];
-        sort(list, {type: 'date', ascending: false});
+        sort(list, [
+            {type: 'date', ascending: false}
+        ]);
         expect(list[0]).to.equal('2014-09-01');
         expect(list[1]).to.equal('2014-06-01');
         expect(list[2]).to.equal('2014-03-01');
@@ -178,7 +195,9 @@ describe('sort', function () {
 
     it('Should sort a boolean list into ascending order', function () {
         var list = [true, false, true];
-        sort(list, {type: 'boolean'});
+        sort(list, [
+            {type: 'boolean'}
+        ]);
         expect(list[0]).to.equal(false);
         expect(list[1]).to.equal(true);
         expect(list[2]).to.equal(true);
@@ -186,7 +205,9 @@ describe('sort', function () {
 
     it('Should sort a boolean list into descending order', function () {
         var list = [true, false, true];
-        sort(list, {type: 'boolean', ascending: false});
+        sort(list, [
+            {type: 'boolean', ascending: false}
+        ]);
         expect(list[0]).to.equal(true);
         expect(list[1]).to.equal(true);
         expect(list[2]).to.equal(false);
@@ -194,7 +215,9 @@ describe('sort', function () {
 
     it('Should sort an integer list into ascending order', function () {
         var list = [1, 5, 2];
-        sort(list, {type: 'integer'});
+        sort(list, [
+            {type: 'integer'}
+        ]);
         expect(list[0]).to.equal(1);
         expect(list[1]).to.equal(2);
         expect(list[2]).to.equal(5);
@@ -202,7 +225,9 @@ describe('sort', function () {
 
     it('Should sort an integer list into descending order', function () {
         var list = [1, 5, 2];
-        sort(list, {type: 'integer', ascending: false});
+        sort(list, [
+            {type: 'integer', ascending: false}
+        ]);
         expect(list[0]).to.equal(5);
         expect(list[1]).to.equal(2);
         expect(list[2]).to.equal(1);
@@ -210,7 +235,9 @@ describe('sort', function () {
 
     it('Should sort a float list into ascending order', function () {
         var list = [1.2, 1.1, 1.3];
-        sort(list, {type: 'float'});
+        sort(list, [
+            {type: 'float'}
+        ]);
         expect(list[0]).to.equal(1.1);
         expect(list[1]).to.equal(1.2);
         expect(list[2]).to.equal(1.3);
@@ -218,7 +245,9 @@ describe('sort', function () {
 
     it('Should sort a float list into descending order', function () {
         var list = [1.2, 1.1, 1.3];
-        sort(list, {type: 'float', ascending: false});
+        sort(list, [
+            {type: 'float', ascending: false}
+        ]);
         expect(list[0]).to.equal(1.3);
         expect(list[1]).to.equal(1.2);
         expect(list[2]).to.equal(1.1);

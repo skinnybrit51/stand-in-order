@@ -25,7 +25,7 @@ module.exports = function (grunt) {
                     describe: true
                 }
             },
-            all: ['Gruntfile.js', 'test/**/*.js', 'lib/**/*.js']
+            all: ['index.js', 'Gruntfile.js', 'test/**/*.js', 'lib/**/*.js']
         }
     });
 
