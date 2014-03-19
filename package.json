@@ -5,7 +5,7 @@
   "keywords": ["sort", "javascript", "objects"],
   "repository": {
     "type": "git",
-    "url": "https://github.com/mmaltby/stand-in-order"
+    "url": "https://github.com/skinnybrit51/stand-in-order"
   },
   "dependencies": {
     "underscore": "1.6.0"
