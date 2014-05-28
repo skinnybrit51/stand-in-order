@@ -1,6 +1,8 @@
 stand-in-order
 ==============
 
+[![NPM version](https://badge.fury.io/js/stand-in-order.svg)](http://badge.fury.io/js/stand-in-order)
+
 #### Description
 
 * Sort an array by a single variable type
