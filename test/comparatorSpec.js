@@ -7,6 +7,8 @@ describe('Comparator', function () {
         expect(comparator.string('ann', 'zoe') < 0).to.be.true;
         expect(comparator.string('ann', 'ann') === 0).to.be.true;
         expect(comparator.string('ann', 'zoe', false) > 0).to.be.true;
+        expect(comparator.string(null, 'zoe') < 0).to.be.true;
+        expect(comparator.string('ann', null) > 0).to.be.true;
     });
 
     it('Should compare two dates', function () {
