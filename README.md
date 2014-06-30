@@ -13,48 +13,62 @@ stand-in-order
 #### Using
 
 * Installation
+
 ```npm install stand-in-order```
 
-* Basic Example
-```
-    var sorter = require('stand-by-order');
-    sorter(['a', 'b', 'aa', 'bc'], [{type:'string', ascending: true, name: null}]);
-```
-
 * Function Explained
+
 The ```sorter``` takes two arguments.  First argument is the array to sort and second is an array of options.
 
 ```
     {
-        ascending: Boolean, // true || false - default is true
-        type: String,       // ['string', 'integer', 'float', 'boolean', 'date'] - required
-        name: String,       // property to sort by - leave null when not an array of objects - default null
+        // true || false - default is true
+        ascending: Boolean, 
+        
+        // 'string' || 'integer' || 'float' || 'boolean' || 'date' - required
+        type: String,       
+        
+        // property name to sort by
+        name: String       
     }
 ```
 
+* Basic Example
+
+```
+    var sorter = require('stand-by-order');
+    sorter(
+        ['a', 'b', 'aa', 'bc'],
+        [
+            {type: 'string', ascending: true, name: null}
+        ]
+    );
+```
+
 * Complex Example
+
 ```
     var sorter = require('stand-in-order');
     var list = [
-                   {
-                       foo: 1,
-                       bar: 'z'
-                   },
-                   {
-                       foo: 2,
-                       bar: 'a'
-                   },
-                   {
-                       foo: 1,
-                       bar: 'g'
-                   },
-                   {
-                       foo: 1,
-                       bar: 'c'
-                   }
-               ];
+        {
+            foo: 1,
+            bar: 'z'
+        },
+        {
+            foo: 2,
+            bar: 'a'
+        },
+        {
+            foo: 1,
+            bar: 'g'
+        },
+        {
+            foo: 1,
+            bar: 'c'
+        }
+    ];
     sorter(list, [
-                    {name: 'foo', type: 'integer', ascending: true},
-                    {name: 'bar', type: 'string', ascending: false}
-                ]);
+        {name: 'foo', type: 'integer', ascending: true},
+        {name: 'bar', type: 'string', ascending: false}
+    ]);
 ```
