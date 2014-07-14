@@ -5,36 +5,35 @@ stand-in-order
 
 #### Description
 
-* Sort an array by a single variable type
-* Sort an array by an object value
-* Sort an array by multiple object values
+* Sort an array by a primitive type.
+* Sort an array by an object property value.
+* Sort an array by multiple object property values.
 
 
-#### Using
-
-* Installation
+#### Installation
 
 ```npm install stand-in-order```
 
-* Function Explained
+#### Using
 
-The ```sorter``` takes two arguments.  First argument is the array to sort and second is an array of options.
+Available options:
 
 ```
     {
         // true || false - default is true
-        ascending: Boolean, 
+        ascending: true, 
         
         // 'string' || 'integer' || 'float' || 'boolean' || 'date' - required
-        type: String,       
+        type: 'string',       
         
         // property name to sort by
-        name: String       
+        name: 'foo'       
     }
 ```
 
-* Basic Example
+##### Primitive Type Example
 
+The ```sorter``` takes two arguments.  First argument is the array to sort and second is an array of options.
 ```
     var sorter = require('stand-by-order');
     sorter(
@@ -45,7 +44,7 @@ The ```sorter``` takes two arguments.  First argument is the array to sort and s
     );
 ```
 
-* Complex Example
+##### Object Example
 
 ```
     var sorter = require('stand-in-order');

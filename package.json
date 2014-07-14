@@ -1,8 +1,8 @@
 {
   "name": "stand-in-order",
-  "description": "sorting library",
-  "version": "0.0.5",
-  "keywords": ["sort", "javascript", "objects"],
+  "description": "Sort an array contents",
+  "version": "0.0.6",
+  "keywords": ["array", "sort", "javascript", "objects"],
   "repository": {
     "type": "git",
     "url": "https://github.com/skinnybrit51/stand-in-order"
