@@ -1,7 +1,7 @@
 {
   "name": "stand-in-order",
-  "description": "Sort an array contents",
-  "version": "0.0.6",
+  "description": "Sort an array contents.",
+  "version": "0.0.7",
   "keywords": ["array", "sort", "javascript", "objects"],
   "repository": {
     "type": "git",
