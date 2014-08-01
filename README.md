@@ -35,7 +35,7 @@ Available options:
 
 The ```sorter``` takes two arguments.  First argument is the array to sort and second is an array of options.
 ```
-    var sorter = require('stand-by-order');
+    var sorter = require('stand-in-order');
     sorter(
         ['a', 'b', 'aa', 'bc'],
         [
