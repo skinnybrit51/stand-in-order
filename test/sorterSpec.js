@@ -142,13 +142,6 @@ describe('Sort', function () {
         expect(list[3].foo).to.equal('z');
     });
 
-    it('Should throw an error if no type is defined', function () {
-        expect(function () {
-            sort([], []);
-        }).to.throw('No type defined for sort.  Type must be set to one of the following - ' +
-                'string,integer,float,boolean,date');
-    });
-
     it('Should sort a string list into ascending order', function () {
         var list = ['a', 'b', 'aa', 'bc'];
         sort(list, [
@@ -251,6 +244,65 @@ describe('Sort', function () {
         expect(list[0]).to.equal(1.3);
         expect(list[1]).to.equal(1.2);
         expect(list[2]).to.equal(1.1);
+    });
+
+    it('Should be able to provide a custom compare for sorting values', function () {
+
+        var compare = function (left, right, ascending) {
+
+            var value = 0;
+            if (left === 'open' && (right === 'active' || right === 'close')) {
+                value = -1;
+            }
+
+            if (left === 'active' && right === 'close') {
+                value = -1;
+            }
+
+            if (left === 'active' && right === 'open') {
+                value = 1;
+            }
+
+            if (left === 'close' && (right === 'open' || right === 'active')) {
+                value = 1;
+            }
+
+            if (left === right) {
+                value = 0;
+            }
+
+            if (!ascending) {
+                if (value === -1 || value === 1) {
+                    value = value * -1;
+                }
+            }
+
+            return value;
+        };
+
+        var list = ['open', 'close', 'active', 'close', 'active', 'open'];
+        sort(list, [
+            {compare: compare}
+        ]);
+
+        expect(list.length).to.equal(6);
+        expect(list[0]).to.equal('open');
+        expect(list[1]).to.equal('open');
+        expect(list[2]).to.equal('active');
+        expect(list[3]).to.equal('active');
+        expect(list[4]).to.equal('close');
+        expect(list[5]).to.equal('close');
+
+        sort(list, [
+            {compare: compare, ascending: false}
+        ]);
+
+        expect(list[0]).to.equal('close');
+        expect(list[1]).to.equal('close');
+        expect(list[2]).to.equal('active');
+        expect(list[3]).to.equal('active');
+        expect(list[4]).to.equal('open');
+        expect(list[5]).to.equal('open');
     });
 
 });

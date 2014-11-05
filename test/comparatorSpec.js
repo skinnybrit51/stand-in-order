@@ -34,9 +34,4 @@ describe('Comparator', function () {
         expect(comparator.float(1.1, 1.1) === 0).to.be.true;
         expect(comparator.float(1.1, 1.2, false) > 0).to.be.true;
     });
-
-    sorter(list, [
-        {name: 'foo', type: 'integer', ascending: true},
-        {name: 'bar', type: 'string', ascending: false}
-    ]);
 });
