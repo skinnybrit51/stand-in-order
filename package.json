@@ -24,7 +24,7 @@
   },
   "scripts": {
     "lint": "jshint **/*.js && jshint index.js",
-    "test": "mocha test/",
+    "test": "NODE_PATH=lib mocha test/",
     "posttest": "npm run lint"
   }
 }
