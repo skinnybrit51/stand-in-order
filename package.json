@@ -1,25 +1,30 @@
 {
   "name": "stand-in-order",
   "description": "Sort an array contents.",
-  "version": "1.0.9",
-  "keywords": ["array", "sort", "javascript", "objects"],
+  "version": "2.0.0",
+  "keywords": [
+    "array",
+    "sort",
+    "javascript",
+    "objects"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/skinnybrit51/stand-in-order"
   },
   "dependencies": {
+    "comparefunction": "^1.0.2",
     "underscore": "1.6.0"
   },
   "devDependencies": {
-    "mocha": "1.18.0",
-    "chai": "1.9.0",
-    "grunt": "~0.4.2",
-    "grunt-cli": "0.1.11",
-    "grunt-simple-mocha": "~0.4.0",
-    "grunt-jshint2": "~2.4.4",
-    "jsdom": "~0.8.10"
+      "chai": "^3.5.0",
+      "jsdom": "^8.4.0",
+      "jshint": "^2.9.2",
+      "mocha": "^2.4.5"
   },
   "scripts": {
-    "test": "NODE_PATH=lib grunt test"
+    "lint": "jshint **/*.js && jshint index.js",
+    "test": "mocha test/",
+    "posttest": "npm run lint"
   }
 }

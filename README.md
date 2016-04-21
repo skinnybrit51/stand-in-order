@@ -1,6 +1,7 @@
 stand-in-order
 ==============
 
+[![Build Status](https://travis-ci.org/skinnybrit51/stand-in-order.svg?branch=master)](https://travis-ci.org/skinnybrit51/stand-in-order)
 [![NPM version](https://badge.fury.io/js/stand-in-order.svg)](http://badge.fury.io/js/stand-in-order)
 
 #### Description
@@ -21,14 +22,14 @@ Available options:
 ```
     {
         // true || false - default is true
-        ascending: true, 
-        
+        ascending: true,
+
         // 'string' || 'integer' || 'float' || 'boolean' || 'date' - default is 'string'
         type: 'string',       
-        
+
         // property name to sort by
         name: 'foo',
-               
+
         // comparator function - defining one will overwrite 'type'        
         compare: null
     }
@@ -79,34 +80,34 @@ The ```sorter``` takes two arguments.  First argument is the array to sort and s
 
 ```
     var compare = function (left, right, ascending) {
-    
+
         var value = 0;
         if (left === 'open' && (right === 'active' || right === 'close')) {
             value = -1;
         }
-    
+
         if (left === 'active' && right === 'close') {
             value = -1;
         }
-    
+
         if (left === 'active' && right === 'open') {
             value = 1;
         }
-    
+
         if (left === 'close' && (right === 'open' || right === 'active')) {
             value = 1;
         }
-    
+
         if (left === right) {
             value = 0;
         }
-    
+
         if (!ascending) {
             if (value === -1 || value === 1) {
                 value = value * -1;
             }
         }
-    
+
         return value;
     };
 
@@ -116,5 +117,5 @@ The ```sorter``` takes two arguments.  First argument is the array to sort and s
     ]);
     console.log(list);
     // [ 'open', 'open', 'active', 'active', 'close', 'close' ]
-    
+
 ```
